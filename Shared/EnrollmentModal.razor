@@ -1,0 +1,77 @@
+@if (IsVisible)
+{
+    <div class="modal-overlay" @onclick="CloseModal">
+        <div class="modal-content" @onclick:stopPropagation>
+            <button class="modal-close" @onclick="CloseModal">×</button>
+            
+            <div class="modal-header">
+                <h2>Заберите пробное занятие бесплатно!</h2>
+                <p>Оставьте свой номер телефона, и мы свяжемся с вами в ближайшее время.</p>
+            </div>
+
+            <form class="modal-form" @onsubmit="SubmitForm">
+                <div class="form-group">
+                    <input type="text" 
+                           class="form-input" 
+                           placeholder="Ваше имя" 
+                           @bind="Name"
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <div class="phone-input-wrapper">
+                        <span class="country-code">🇷🇺 +7</span>
+                        <input type="tel" 
+                               class="form-input phone-input" 
+                               placeholder="(000) 000-00-00" 
+                               @bind="Phone"
+                               required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Оставить заявку</button>
+
+                <p class="modal-agreement">
+                    Нажимая кнопку, Вы соглашаетесь с 
+                    <a href="#" class="agreement-link">Политикой конфиденциальности</a> 
+                    и даёте согласие на обработку персональных данных.
+                </p>
+            </form>
+
+            @if (SuccessMessage)
+            {
+                <div class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>Заявка отправлена!</h3>
+                    <p>Мы свяжемся с вами в ближайшее время.</p>
+                    <button class="btn-close-success" @onclick="CloseModal">Закрыть</button>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public EventCallback<(string Name, string Phone)> OnSubmit { get; set; }
+
+    private string Name { get; set; } = "";
+    private string Phone { get; set; } = "";
+    private bool SuccessMessage { get; set; } = false;
+
+    private void CloseModal()
+    {
+        SuccessMessage = false;
+        Name = "";
+        Phone = "";
+        OnClose.InvokeAsync();
+    }
+
+    private async Task SubmitForm()
+    {
+        // Здесь можно добавить отправку данных на сервер
+        await OnSubmit.InvokeAsync((Name, Phone));
+        SuccessMessage = true;
+    }
+}

@@ -1,0 +1,217 @@
+@page "/"
+@inject IDataService DataService
+
+<!-- Секция 1: Главный баннер (Hero) -->
+<section class="hero-section">
+    <div class="hero-text">
+        <h1>Подготовка к школе<br>для самых маленьких</h1>
+        <p>
+            Комплексный подход к развитию вашего ребенка. 
+            Мы учим читать, считать и дружить в игровой форме.
+        </p>
+        <a href="#courses-list" class="btn-signup">Выбрать программу →</a>
+    </div>
+    <div class="hero-image">
+        <img src="images/heros.jpg" alt="Счастливый ребенок">
+    </div>
+</section>
+
+<!-- Секция 2: Преимущества (Без фото, с подробной информацией) -->
+<section class="advantages-section">
+    <div class="container">
+        <h2>Почему родители выбирают «Взгляд в будущее»?</h2>
+        <p class="section-subtitle">Мы создаём безопасную и развивающую среду, где каждый ребёнок получает максимум внимания и заботы</p>
+        
+        <div class="advantages-grid">
+            <!-- Карточка 1 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Экспертные педагоги</h3>
+                <p>Наши учителя — специалисты высшей категории со стажем более 10 лет. Они проходят регулярное повышение квалификации и владеют современными методиками дошкольного образования.</p>
+                <ul class="card-list">
+                    <li>✓ Дипломированные педагоги-логопеды</li>
+                    <li>✓ Психологи с опытом работы с детьми</li>
+                    <li>✓ Индивидуальный подход к каждому ребёнку</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Современные методики</h3>
+                <p>Мы используем интерактивные технологии и игровые форматы обучения, которые делают процесс увлекательным и эффективным. Дети учатся с удовольствием!</p>
+                <ul class="card-list">
+                    <li>✓ Интерактивные доски и планшеты</li>
+                    <li>✓ Развивающие компьютерные программы</li>
+                    <li>✓ Методика Монтессори и другие авторские системы</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Малые группы</h3>
+                <p>В наших группах не более 8 человек. Это позволяет педагогу уделить внимание каждому ребёнку, заметить его сильные стороны и помочь в сложных моментах.</p>
+                <ul class="card-list">
+                    <li>✓ Максимум 8 детей в группе</li>
+                    <li>✓ Индивидуальная траектория развития</li>
+                    <li>✓ Регулярная обратная связь для родителей</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Безопасность и комфорт</h3>
+                <p>Безопасность вашего ребёнка — наш приоритет. Центр оборудован системой видеонаблюдения, контроль доступа и сертифицированное питание.</p>
+                <ul class="card-list">
+                    <li>✓ Видеонаблюдение 24/7</li>
+                    <li>✓ Контроль доступа по электронным пропускам</li>
+                    <li>✓ Гипоаллергенное меню от шеф-повара</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 5 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Полная подготовка к школе</h3>
+                <p>Наша программа соответствует ФГОС и охватывает все необходимые направления: чтение, письмо, математика, развитие речи, окружающий мир и творчество.</p>
+                <ul class="card-list">
+                    <li>✓ Чтение и письмо по авторской методике</li>
+                    <li>✓ Математика и логическое мышление</li>
+                    <li>✓ Развитие мелкой моторики и речи</li>
+                </ul>
+            </div>
+
+            <!-- Карточка 6 -->
+            <div class="advantage-card">
+                <div class="card-icon"></div>
+                <h3>Доступные условия</h3>
+                <p>Мы понимаем заботы родителей и предлагаем гибкую систему оплаты, скидки для многодетных семей и бесплатные пробные занятия.</p>
+                <ul class="card-list">
+                    <li>✓ Первое пробное занятие — бесплатно!</li>
+                    <li>✓ Скидка 15% для второго ребёнка</li>
+                    <li>✓ Возможность помесячной оплаты</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Секция 3: Курсы (Подробные) -->
+<div id="courses-list" class="courses-detailed-section">
+    <h2 class="section-title">Наши программы обучения</h2>
+    
+    @if (courses != null)
+    {
+        @foreach (var course in courses)
+        {
+            <div class="course-detailed-block">
+                <div class="course-image-large">
+                    @if (course.Title.Contains("Математика", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <img src="images/math.jpg" alt="Математика">
+                    }
+                    else if (course.Title.Contains("Английский", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <img src="images/english.jpg" alt="Английский">
+                    }
+                    else if (course.Title.Contains("Рисование", StringComparison.OrdinalIgnoreCase) || course.Title.Contains("Творчество", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <img src="images/arty.jpg" alt="Творчество">
+                    }
+                    else if (course.Title.Contains("Чтение", StringComparison.OrdinalIgnoreCase) || course.Title.Contains("речи", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <img src="images/readings.jpg" alt="Чтение">
+                    }
+                    else if (course.Title.Contains("Письм", StringComparison.OrdinalIgnoreCase))  
+                    {
+                        <img src="images/writing.jpg" alt="Подготовка руки к письму">
+                    }
+                    else
+                    {
+                        <img src="images/reading.jpg" alt="Курс">
+                    }
+                </div>
+                
+                <div class="course-info-large">
+                    <h3 class="course-title-large">@course.Title</h3>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <span class="meta-icon">👥</span>
+                            <span>Группа до <strong>@course.MaxStudents</strong> человек</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            <span>Занятия 2-3 раза в неделю</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">⏰</span>
+                            <span>Продолжительность 45-60 минут</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon"></span>
+                            <span>Возраст 5-7 лет</span>
+                        </div>
+                    </div>
+
+                    <div class="course-description">
+                        <h4>О программе:</h4>
+                        <p>@course.Description</p>
+                    </div>
+
+                    <div class="course-features">
+                        <h4>Что входит в занятие:</h4>
+                        <ul>
+                            <li>✅ Разминка и физкультминутка</li>
+                            <li>✅ Изучение нового материала в игровой форме</li>
+                            <li>✅ Закрепление навыков через практические задания</li>
+                            <li>✅ Творческое задание для развития воображения</li>
+                            <li>✅ Обратная связь для родителей после каждого занятия</li>
+                        </ul>
+                    </div>
+
+                    <div class="course-actions">
+                        <button class="btn-enroll-large" @onclick="OpenModal">Записаться на курс →</button>
+                        <span class="course-note">Первое пробное занятие — бесплатно!</span>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p style="text-align:center; padding: 50px;">Загрузка программ...</p>
+    }
+</div>
+
+<!-- Модальное окно -->
+<EnrollmentModal IsVisible="showModal" OnClose="CloseModal" OnSubmit="HandleEnrollment" />
+
+@code {
+    [Inject] private NavigationManager? Nav { get; set; }
+    private List<Course>? courses;
+    private bool showModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        courses = await DataService.GetAllCoursesAsync();
+    }
+
+    private void OpenModal()
+    {
+        showModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+    }
+
+    private async Task HandleEnrollment((string Name, string Phone) data)
+    {
+        Console.WriteLine($"Заявка: {data.Name}, {data.Phone}");
+        await Task.CompletedTask;
+    }
+}

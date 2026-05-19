@@ -1,0 +1,43 @@
+@page "/children"
+@inject IDataService DataService
+
+<h3>👶 Список детей</h3>
+
+@if (children == null)
+{
+    <p><em>Загрузка данных...</em></p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>СНИЛС</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var child in children)
+            {
+                <tr>
+                    <td>@child.Id</td>
+                    <td>@child.FullName</td>
+                    <td>@child.BirthDate.ToString("dd.MM.yyyy")</td>
+                    <td>@child.InsuranceNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Child>? children;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Вызываем ваш уже готовый сервис
+        children = await DataService.GetAllChildrenAsync();
+    }
+}

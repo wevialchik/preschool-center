@@ -1,0 +1,33 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vs
+.vscode
+
+# Environment
+.env
+.env.*
+
+# Documentation
+*.md
+docs/
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Test results
+TestResults/
+*.trx
+
+# Node modules (if any)
+node_modules/

@@ -1,0 +1,162 @@
+@page "/enrollment"
+@inject IDataService DataService
+
+<div class="enrollment-page">
+    <!-- Hero секция -->
+    <section class="enrollment-hero">
+        <div class="container">
+            <h1>Запишитесь на пробное занятие</h1>
+            <p>Или остались вопросы? Мы с радостью поможем!</p>
+        </div>
+    </section>
+
+    <!-- Основная форма и информация -->
+    <section class="enrollment-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Левая часть: Информация -->
+                <div class="info-section">
+                    <h2>Хотите записаться на пробное занятие<br>или остались вопросы?</h2>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="card-icon">💬</div>
+                            <h3>Задайте вопросы<br>учителю</h3>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon"></div>
+                            <h3>Уточнить возрастные<br>особенности ребенка</h3>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon"></div>
+                            <h3>Обсудите индивидуальное<br>расписание</h3>
+                        </div>
+                    </div>
+
+                    <div class="contact-section">
+                        <h3>Или можете связаться с нами прямо сейчас:</h3>
+                        
+                        <div class="contact-buttons">
+                            <a href="tel:+79166978190" class="contact-btn phone">
+                                <span class="btn-icon">📞</span>
+                                <span>+7 (916) 697-81-90</span>
+                            </a>
+                            
+                            <a href="https://wa.me/79166978190" class="contact-btn whatsapp" target="_blank">
+                                <span class="btn-icon">💬</span>
+                                <span>Написать в WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая часть: Форма -->
+                <div class="form-section">
+                    <div class="form-wrapper">
+                        <h2>Оставьте заявку,<br>и мы Вам перезвоним!</h2>
+                        <p class="form-subtitle">Бесплатную беседу проводит учитель-логопед.</p>
+
+                        <form class="enrollment-form" @onsubmit="SubmitForm">
+                            <div class="form-group">
+                                <input type="text" 
+                                       class="form-input" 
+                                       placeholder="Ваше имя" 
+                                       @bind="ParentName"
+                                       required />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="tel" 
+                                       class="form-input" 
+                                       placeholder="+7 (999) 999-99-99" 
+                                       @bind="Phone"
+                                       required />
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-select" @bind="SelectedChildId" required>
+                                    <option value="0">Выберите ребенка</option>
+                                    @if (children != null)
+                                    {
+                                        @foreach (var child in children)
+                                        {
+                                            <option value="@child.Id">@child.FullName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-select" @bind="SelectedCourseId" required>
+                                    <option value="0">Выберите курс</option>
+                                    @if (courses != null)
+                                    {
+                                        @foreach (var course in courses)
+                                        {
+                                            <option value="@course.Id">@course.Title</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-submit-form">
+                                Записаться на занятие
+                            </button>
+
+                            <p class="form-agreement">
+                                Нажимая кнопку, Вы соглашаетесь с 
+                                <a href="#" class="agreement-link">Политикой конфиденциальности</a> 
+                                и даёте согласие на обработку персональных данных.
+                            </p>
+                        </form>
+
+                        @if (SuccessMessage)
+                        {
+                            <div class="success-message">
+                                <div class="success-icon">✓</div>
+                                <h3>Заявка отправлена!</h3>
+                                <p>Мы свяжемся с вами в ближайшее время.</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    private List<Child>? children;
+    private List<Course>? courses;
+    private int SelectedChildId { get; set; }
+    private int SelectedCourseId { get; set; }
+    private string ParentName { get; set; } = "";
+    private string Phone { get; set; } = "";
+    private bool SuccessMessage { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        children = await DataService.GetAllChildrenAsync();
+        courses = await DataService.GetAllCoursesAsync();
+    }
+
+    private async Task SubmitForm()
+    {
+        if (SelectedChildId > 0 && SelectedCourseId > 0 && !string.IsNullOrEmpty(ParentName) && !string.IsNullOrEmpty(Phone))
+        {
+            await DataService.EnrollChildToCourseAsync(SelectedChildId, SelectedCourseId);
+            SuccessMessage = true;
+            
+            // Сброс формы
+            SelectedChildId = 0;
+            SelectedCourseId = 0;
+            ParentName = "";
+            Phone = "";
+            
+            await Task.Delay(3000);
+            SuccessMessage = false;
+        }
+    }
+}

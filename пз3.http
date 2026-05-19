@@ -1,0 +1,6 @@
+@пз3_HostAddress = http://localhost:5102
+
+GET {{пз3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,131 @@
+@inherits LayoutComponentBase
+
+<div class="layout-wrapper">
+    <!-- Верхняя шапка с контактами -->
+    <header class="top-header">
+        <div class="header-container">
+            <!-- Логотип слева -->
+            <a href="/" class="logo-block">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" width="60" height="60">
+                        <circle cx="50" cy="50" r="45" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+                        <circle cx="30" cy="35" r="12" fill="#a78bfa"/>
+                        <circle cx="70" cy="35" r="12" fill="#c4b5fd"/>
+                        <circle cx="30" cy="65" r="12" fill="#8b5cf6"/>
+                        <circle cx="70" cy="65" r="12" fill="#7c3aed"/>
+                        <circle cx="50" cy="50" r="14" fill="#6d28d9"/>
+                        <text x="50" y="55" text-anchor="middle" fill="white" font-size="16" font-weight="bold">★</text>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-center-name">ДОШКОЛЬНЫЙ ЦЕНТР</span>
+                    <span class="logo-center-title">Взгляд в будущее</span>
+                </div>
+            </a>
+
+            <!-- Контакты справа -->
+            <div class="header-right">
+                <!-- Иконки соцсетей -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon" title="ВКонтакте">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#7c3aed">
+                            <path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.598-.189 1.367 1.258 2.182 1.814.616.42 1.084.328 1.084.328l2.177-.03s1.14-.07.599-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.999-1.33 1.398-2.142 1.273-2.489-.119-.332-.856-.244-.856-.244l-2.45.015s-.182-.025-.316.056c-.131.079-.216.263-.216.263s-.387 1.028-.903 1.903c-1.089 1.85-1.525 1.948-1.704 1.834-.416-.262-.312-1.055-.312-1.615 0-1.752.265-2.483-.517-2.674-.26-.063-.45-.105-1.113-.112-.851-.009-1.572.003-1.98.202-.271.133-.48.43-.353.447.157.021.513.096.701.353.243.331.234 1.073.234 1.073s.14 2.07-.326 2.327c-.32.177-.758-.184-1.702-1.835-.482-.843-.847-1.776-.847-1.776s-.07-.172-.196-.265c-.153-.113-.367-.149-.367-.149l-2.328.015s-.35.01-.478.162c-.114.135-.009.414-.009.414s1.816 4.244 3.872 6.384c1.886 1.963 4.029 1.834 4.029 1.834h.971z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#7c3aed">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" title="Telegram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#7c3aed">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Телефон -->
+                <div class="phone-block">
+                    <span class="phone-label">Телефон:</span>
+                    <a href="tel:+79166978190" class="phone-number">+7 (916) 697-81-90</a>
+                </div>
+
+                <!-- Кнопка записи -->
+                <button class="btn-enroll-header" @onclick="OpenModal">Записаться на занятие</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Навигационное меню -->
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <a href="/" class="nav-item @(IsActive("") ? "active" : "")">На главную</a>
+            <a href="/#advantages" class="nav-item @(IsActive("advantages") ? "active" : "")">Почему мы</a>
+            <a href="/#courses-list" class="nav-item @(IsActive("courses") ? "active" : "")">Программа</a>
+            <a href="/children" class="nav-item @(IsActive("children") ? "active" : "")">Наши ученики</a>
+            <a href="/enrollment" class="nav-item @(IsActive("enrollment") ? "active" : "")">Контакты</a>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        @Body
+    </main>
+
+    <!-- Подвал -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Дошкольный центр</h4>
+                <p>Подготовка детей к школе<br>с любовью и заботой</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>📍 г. Электросталь, ул. Ялагина, д. 10</p>
+                <p>📞 +7 (909) 567-81-90</p>
+                <p>✉️ info@vzglyad-budushchee.ru</p>
+            </div>
+            <div class="footer-section">
+                <h4>Время работы</h4>
+                <p>Пн-Пт: 8:00 - 19:00</p>
+                <p>Сб: 9:00 - 15:00</p>
+                <p>Вс: выходной</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Дошкольный центр "Взгляд в будущее". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <EnrollmentModal IsVisible="showModal" OnClose="CloseModal" OnSubmit="HandleEnrollment" />
+</div>
+
+@code {
+    [Inject] private NavigationManager? Nav { get; set; }
+    private bool showModal = false;
+
+    private bool IsActive(string page)
+    {
+        if (string.IsNullOrEmpty(page))
+            return Nav?.Uri == Nav?.BaseUri;
+        return Nav?.Uri.Contains(page, StringComparison.OrdinalIgnoreCase) ?? false;
+    }
+
+    private void OpenModal()
+    {
+        showModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+    }
+
+    private async Task HandleEnrollment((string Name, string Phone) data)
+    {
+        // Здесь можно сохранить данные в базу
+        Console.WriteLine($"Заявка: {data.Name}, {data.Phone}");
+        await Task.CompletedTask;
+    }
+}
