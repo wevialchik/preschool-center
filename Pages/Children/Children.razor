@@ -37,7 +37,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        // Вызываем ваш уже готовый сервис
         children = await DataService.GetAllChildrenAsync();
     }
 }

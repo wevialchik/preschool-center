@@ -70,7 +70,6 @@
 
     private async Task SubmitForm()
     {
-        // Здесь можно добавить отправку данных на сервер
         await OnSubmit.InvokeAsync((Name, Phone));
         SuccessMessage = true;
     }

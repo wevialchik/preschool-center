@@ -1,7 +1,6 @@
 @page "/"
 @inject IDataService DataService
 
-<!-- Секция 1: Главный баннер (Hero) -->
 <section class="hero-section">
     <div class="hero-text">
         <h1>Подготовка к школе<br>для самых маленьких</h1>
@@ -16,14 +15,12 @@
     </div>
 </section>
 
-<!-- Секция 2: Преимущества (Без фото, с подробной информацией) -->
 <section class="advantages-section">
     <div class="container">
         <h2>Почему родители выбирают «Взгляд в будущее»?</h2>
         <p class="section-subtitle">Мы создаём безопасную и развивающую среду, где каждый ребёнок получает максимум внимания и заботы</p>
         
         <div class="advantages-grid">
-            <!-- Карточка 1 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Экспертные педагоги</h3>
@@ -35,7 +32,6 @@
                 </ul>
             </div>
 
-            <!-- Карточка 2 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Современные методики</h3>
@@ -47,7 +43,6 @@
                 </ul>
             </div>
 
-            <!-- Карточка 3 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Малые группы</h3>
@@ -59,7 +54,6 @@
                 </ul>
             </div>
 
-            <!-- Карточка 4 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Безопасность и комфорт</h3>
@@ -71,7 +65,6 @@
                 </ul>
             </div>
 
-            <!-- Карточка 5 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Полная подготовка к школе</h3>
@@ -83,7 +76,6 @@
                 </ul>
             </div>
 
-            <!-- Карточка 6 -->
             <div class="advantage-card">
                 <div class="card-icon"></div>
                 <h3>Доступные условия</h3>
@@ -98,7 +90,6 @@
     </div>
 </section>
 
-<!-- Секция 3: Курсы (Подробные) -->
 <div id="courses-list" class="courses-detailed-section">
     <h2 class="section-title">Наши программы обучения</h2>
     
@@ -186,7 +177,6 @@
     }
 </div>
 
-<!-- Модальное окно -->
 <EnrollmentModal IsVisible="showModal" OnClose="CloseModal" OnSubmit="HandleEnrollment" />
 
 @code {

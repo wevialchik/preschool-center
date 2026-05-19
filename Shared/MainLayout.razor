@@ -44,19 +44,16 @@
                     </a>
                 </div>
 
-                <!-- Телефон -->
                 <div class="phone-block">
                     <span class="phone-label">Телефон:</span>
                     <a href="tel:+79166978190" class="phone-number">+7 (916) 697-81-90</a>
                 </div>
 
-                <!-- Кнопка записи -->
                 <button class="btn-enroll-header" @onclick="OpenModal">Записаться на занятие</button>
             </div>
         </div>
     </header>
 
-    <!-- Навигационное меню -->
     <nav class="main-navigation">
         <div class="nav-container">
             <a href="/" class="nav-item @(IsActive("") ? "active" : "")">На главную</a>
@@ -67,12 +64,10 @@
         </div>
     </nav>
 
-    <!-- Основной контент -->
     <main class="main-content">
         @Body
     </main>
 
-    <!-- Подвал -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -97,7 +92,6 @@
         </div>
     </footer>
 
-    <!-- МОДАЛЬНОЕ ОКНО -->
     <EnrollmentModal IsVisible="showModal" OnClose="CloseModal" OnSubmit="HandleEnrollment" />
 </div>
 
@@ -124,7 +118,6 @@
 
     private async Task HandleEnrollment((string Name, string Phone) data)
     {
-        // Здесь можно сохранить данные в базу
         Console.WriteLine($"Заявка: {data.Name}, {data.Phone}");
         await Task.CompletedTask;
     }

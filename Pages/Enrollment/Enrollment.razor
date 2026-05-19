@@ -2,7 +2,6 @@
 @inject IDataService DataService
 
 <div class="enrollment-page">
-    <!-- Hero секция -->
     <section class="enrollment-hero">
         <div class="container">
             <h1>Запишитесь на пробное занятие</h1>
@@ -10,11 +9,9 @@
         </div>
     </section>
 
-    <!-- Основная форма и информация -->
     <section class="enrollment-content">
         <div class="container">
             <div class="content-grid">
-                <!-- Левая часть: Информация -->
                 <div class="info-section">
                     <h2>Хотите записаться на пробное занятие<br>или остались вопросы?</h2>
                     
@@ -52,7 +49,6 @@
                     </div>
                 </div>
 
-                <!-- Правая часть: Форма -->
                 <div class="form-section">
                     <div class="form-wrapper">
                         <h2>Оставьте заявку,<br>и мы Вам перезвоним!</h2>
@@ -148,8 +144,7 @@
         {
             await DataService.EnrollChildToCourseAsync(SelectedChildId, SelectedCourseId);
             SuccessMessage = true;
-            
-            // Сброс формы
+
             SelectedChildId = 0;
             SelectedCourseId = 0;
             ParentName = "";

@@ -1,21 +1,20 @@
-# Стадия 1: Сборка
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ["n33.csproj", "./"]
-RUN dotnet restore "nз3.csproj"
+COPY ["пз3.csproj", "./"]
+RUN dotnet restore "пз3.csproj"
 COPY . .
-RUN dotnet build "nз3.csproj" -c Release -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "пз3.csproj" -c Release -o /app/build
 
-# Стадия 2: Публикация
 FROM build AS publish
-RUN dotnet publish "nз3.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "пз3.csproj" -c Release -o /app/publish
 
-# Стадия 3: Запуск
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+FROM base AS final
 WORKDIR /app
-EXPOSE 8080
 COPY --from=publish /app/publish .
-RUN mkdir -p /app/data
-ENV ASPNETCORE_URLS=http://+:8080
-ENV ASPNETCORE_ENVIRONMENT=Production
-ENTRYPOINT ["dotnet", "nз3.dll"]
+ENTRYPOINT ["dotnet", "пз3.dll"]
