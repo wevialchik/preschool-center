@@ -39,16 +39,64 @@
 | Docker / Docker Compose | — | Контейнеризация и оркестрация |
 
 ---
+---
+
+## 🛠 Сущности базы данных и их связи
+
+| Сущность | Таблица SQLite | Связь|
+|------------|--------|------------|
+|Child | Children | 1:N с ChildCourse |
+| Course | Courses | 1:N с ChildCourse |
+| ChildCourse |ChildCourses | Промежуточная таблица N:M; составной PK (ChildId, CourseId) |
+
+
+---
+---
+
+## 🛠 Схема связей:
+
+Child (1) ──── (N) ChildCourse
+Course (1) ──── (N) ChildCourse
+
+---
+---
+
+## 🛠 Схема связей:
+
+├── Data/                           # Слой доступа к данным
+│   ├── Configurations/             # Конфигурации Fluent API для сущностей
+│   │   ├── ChildConfiguration.cs          # Конфигурация сущности Child
+│   │   ├── ChildCourseConfiguration.cs    # Конфигурация сущности ChildCourse
+│   │   └── CourseConfiguration.cs         # Конфигурация сущности Course
+│   ├── Migrations/                 # Миграции базы данных EF Core
+│   ├── DbSeeder.cs                 # Инициализация тестовыми данными
+│   └── SchoolContext.cs            # Контекст базы данных (DbContext)
+├── Models/                         # Модели данных (сущности БД)
+│   ├── Child.cs                    # Сущность "Ребёнок"
+│   ├── ChildCouse.cs               # Сущность связи "Ребёнок-Курс" (запись)
+│   └── Course.cs                   # Сущность "Образовательный курс"
+├── Pages/                          # Razor-компоненты Blazor Server
+---
 
 ## 🚀 Запуск проекта
 
 ```bash
-git clone https://github.com/wevialchik/пз3.git
-cd пз3
-dotnet restore
+# 1. Восстановить пакеты NuGet
+dotnet restore пз3.csproj
+
+# 2. Запустить приложение
 dotnet run
 
+# Приложение доступно по адресу: http://localhost:5102
 
-git clone https://github.com/wevialchik/пз3.git
-cd пз3
+## 🚀 Запуск проекта
+
+```bash
+
+# 1. Собрать образ и запустить контейнер
 docker-compose up --build -d
+
+# 2. Проверить работоспособность
+docker-compose ps
+
+# Приложение доступно по адресу: http://localhost:8080
