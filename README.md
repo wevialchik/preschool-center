@@ -56,6 +56,8 @@
 ## 🛠 Схема связей:
 
 Child (1) ──── (N) ChildCourse
+
+
 Course (1) ──── (N) ChildCourse
 
 ---
@@ -81,4 +83,4 @@ docker-compose up --build -d
 # 2. Проверить работоспособность
 docker-compose ps
 
-# Приложение доступно по адресу: http://localhost:8080
+# Приложение доступно по адресу: http://localhost:8009
