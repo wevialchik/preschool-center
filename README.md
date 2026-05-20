@@ -59,24 +59,6 @@ Child (1) ──── (N) ChildCourse
 Course (1) ──── (N) ChildCourse
 
 ---
----
-
-## 🛠 Схема связей:
-
-├── Data/                           # Слой доступа к данным
-│   ├── Configurations/             # Конфигурации Fluent API для сущностей
-│   │   ├── ChildConfiguration.cs          # Конфигурация сущности Child
-│   │   ├── ChildCourseConfiguration.cs    # Конфигурация сущности ChildCourse
-│   │   └── CourseConfiguration.cs         # Конфигурация сущности Course
-│   ├── Migrations/                 # Миграции базы данных EF Core
-│   ├── DbSeeder.cs                 # Инициализация тестовыми данными
-│   └── SchoolContext.cs            # Контекст базы данных (DbContext)
-├── Models/                         # Модели данных (сущности БД)
-│   ├── Child.cs                    # Сущность "Ребёнок"
-│   ├── ChildCouse.cs               # Сущность связи "Ребёнок-Курс" (запись)
-│   └── Course.cs                   # Сущность "Образовательный курс"
-├── Pages/                          # Razor-компоненты Blazor Server
----
 
 ## 🚀 Запуск проекта
 
@@ -91,7 +73,7 @@ dotnet run
 
 ## 🚀 Запуск проекта
 
-```bash
+
 
 # 1. Собрать образ и запустить контейнер
 docker-compose up --build -d
