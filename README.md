@@ -35,7 +35,7 @@
 | Blazor Server | 10.0 | Интерактивный UI на C# |
 | Entity Framework Core | 9.0.0 | ORM, Code First, миграции |
 | SQLite | — | Файловая СУБД |
-| FluentValidation | 11.x | Валидация входных данных |
+| FluentValidation | 11.9.2 | Валидация входных данных |
 | Docker / Docker Compose | — | Контейнеризация и оркестрация |
 
 ---
